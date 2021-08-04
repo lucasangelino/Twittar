@@ -1,13 +1,9 @@
 import Head from "next/head";
-import Link from "next/link";
-import { useRouter } from "next/router";
 import { colors } from "../styles/theme";
 import AppLayout from "../components/AppLayout";
-// devit
+import Button from "../components/button";
 
 export default function Home() {
-  const router = useRouter();
-
   return (
     <>
       <Head>
@@ -16,19 +12,38 @@ export default function Home() {
       </Head>
 
       <AppLayout>
-        <h1>
-          <a href="https://nextjs.org">Twittar</a>
-        </h1>
+        <section>
+          <img src="/logo.svg" alt="Logo"></img>
+          <h1>Twittar</h1>
+          <h4>The original App</h4>
+          <div>
+            <Button>Login with GitHub</Button>
+          </div>
+        </section>
       </AppLayout>
 
       <style jsx>
         {`
-          a {
+          section {
+            display: grid;
+            place-items: center;
+            place-content: center;
+            height: 80%;
+          }
+          h1,
+          h4 {
+            text-align: center;
             text-decoration: none;
             color: ${colors.primary};
           }
-          h1 {
-            text-align: center;
+          h4 {
+            color: ${colors.secondary};
+          }
+          img {
+            width: 100px;
+          }
+          div {
+            margin-top: 20px;
           }
         `}
       </style>

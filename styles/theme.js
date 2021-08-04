@@ -4,6 +4,7 @@ export const fonts = {
 };
 
 export const colors = {
+  black: "#181818",
   primary: `#1DA1F2`,
   secondary: `#1c5480`,
 };
