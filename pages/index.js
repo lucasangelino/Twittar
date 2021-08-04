@@ -1,10 +1,32 @@
+import { useState, useEffect } from "react";
 import Head from "next/head";
 import { colors } from "../styles/theme";
 import AppLayout from "../components/AppLayout";
 import Button from "../components/button";
 import GitHub from "../components/Icons/GitHub";
 
+//Login
+import { loginWithGitHub, onAuthStateChanged } from "../firebase/client";
+
 export default function Home() {
+  const [user, setUser] = useState(undefined);
+
+  useEffect(() => {
+    onAuthStateChanged((user) => setUser(user));
+    return () => {};
+  }, []);
+
+  const handleLoginWithGitHub = () => {
+    loginWithGitHub()
+      .then((user) => {
+        const { avatar, url, username } = user;
+        setUser(user);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <>
       <Head>
@@ -18,10 +40,18 @@ export default function Home() {
           <h1>Twity</h1>
           <h4>The original App</h4>
           <div>
-            <Button>
-              <GitHub height={24} width={24} color={"#fff"} />
-              Login with GitHub
-            </Button>
+            {user === null && (
+              <Button onClick={handleLoginWithGitHub}>
+                <GitHub height={24} width={24} color={"#fff"} />
+                Login with GitHub
+              </Button>
+            )}
+            {user && user.avatar && (
+              <div>
+                <img src={user.avatar}></img>
+                <strong>{user.username}</strong>
+              </div>
+            )}
           </div>
         </section>
       </AppLayout>
