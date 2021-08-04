@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { colors } from "../styles/theme";
 import AppLayout from "../components/AppLayout";
 // devit
 
@@ -20,7 +21,17 @@ export default function Home() {
         </h1>
       </AppLayout>
 
-      <style jsx>{``}</style>
+      <style jsx>
+        {`
+          a {
+            text-decoration: none;
+            color: ${colors.primary};
+          }
+          h1 {
+            text-align: center;
+          }
+        `}
+      </style>
     </>
   );
 }

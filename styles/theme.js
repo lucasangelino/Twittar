@@ -4,6 +4,10 @@ export const fonts = {
 };
 
 export const colors = {
-  primary: `#0099ff`,
+  primary: `#1DA1F2`,
   secondary: `#1c5480`,
+};
+
+export const breakpoints = {
+  mobile: "500px",
 };
