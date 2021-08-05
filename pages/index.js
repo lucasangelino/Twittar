@@ -5,7 +5,7 @@ import AppLayout from "../components/AppLayout";
 import Button from "../components/button";
 import GitHub from "../components/Icons/GitHub";
 
-//Login
+// Login
 import { loginWithGitHub, onAuthStateChanged } from "../firebase/client";
 
 export default function Home() {
