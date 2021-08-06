@@ -52,15 +52,8 @@ export default function Home() {
                 Login with GitHub
               </Button>
             )}
-            {user && user.avatar && (
-              <div>
-                <Avatar
-                  src={user.avatar}
-                  alt={user.username}
-                  text={user.username}
-                  withText
-                />
-              </div>
+            {user === undefined && (
+              <img className="spinner" src="/loading.gif" />
             )}
           </div>
         </section>
@@ -94,6 +87,9 @@ export default function Home() {
           }
           div {
             margin-top: 50px;
+          }
+          .spinner {
+            width: 30px;
           }
         `}
       </style>
