@@ -1,5 +1,5 @@
 import Link from "next/link";
-import AppLayout from "../../components/AppLayout";
+import AppLayout from "../applayout";
 
 export default function Timeline({ userName }) {
   return (

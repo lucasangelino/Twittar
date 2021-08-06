@@ -28,6 +28,7 @@ export default css`
     height: 100vh;
   }
   main {
+    position: relative;
     background: #fff;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     border-radius: 10px;

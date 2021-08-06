@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
 import { colors } from "../styles/theme";
-import AppLayout from "../components/AppLayout";
+import AppLayout from "../components/applayout";
 import Button from "../components/button";
 import GitHub from "../components/Icons/GitHub";
+import Avatar from "../components/Avatar";
 
 // Login
 import { loginWithGitHub, onAuthStateChanged } from "../firebase/client";
@@ -48,8 +49,12 @@ export default function Home() {
             )}
             {user && user.avatar && (
               <div>
-                <img src={user.avatar}></img>
-                <strong>{user.username}</strong>
+                <Avatar
+                  src={user.avatar}
+                  alt={user.username}
+                  text={user.username}
+                  withText
+                />
               </div>
             )}
           </div>
@@ -72,15 +77,18 @@ export default function Home() {
           }
           h1 {
             font-size: 45px;
+            margin-top: 10px;
+            margin-bottom: 10px;5px;
           }
           h4 {
             color: ${colors.secondary};
+            margin-top: 5px;
           }
           img {
             width: 100px;
           }
           div {
-            margin-top: 20px;
+            margin-top: 50px;
           }
         `}
       </style>
