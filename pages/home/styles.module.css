@@ -26,4 +26,5 @@
   display: block;
   padding-top: 100px;
   position: relative;
+  overflow-y: scroll;
 }

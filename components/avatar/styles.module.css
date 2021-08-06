@@ -4,24 +4,24 @@
   align-items: center;
 }
 .avatar {
-  width: 100;
-  height: 100px;
+  width: 49px;
+  height: 49px;
   border-radius: 100%;
 }
 .gradient_avatar {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 130px;
-  height: 130px;
+  width: 60px;
+  height: 60px;
   border-radius: 100%;
-  background: rgb(2, 0, 36);
+  /* background: rgb(2, 0, 36);
   background: radial-gradient(
     circle,
     rgba(2, 0, 36, 1) 0%,
     rgba(29, 161, 242, 1) 50%,
     rgba(255, 255, 255, 1) 63%
-  );
+  ); */
 }
 
 .username {
