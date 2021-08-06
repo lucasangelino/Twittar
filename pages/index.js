@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import { colors } from "../styles/theme";
 import AppLayout from "../components/applayout";
 import Button from "../components/button";
@@ -11,16 +12,20 @@ import { loginWithGitHub, onAuthStateChanged } from "../firebase/client";
 
 export default function Home() {
   const [user, setUser] = useState(undefined);
+  const router = useRouter();
 
   useEffect(() => {
     onAuthStateChanged((user) => setUser(user));
     return () => {};
   }, []);
 
+  useEffect(() => {
+    user && router.replace("/home");
+  }, [user]);
+
   const handleLoginWithGitHub = () => {
     loginWithGitHub()
       .then((user) => {
-        const { avatar, url, username } = user;
         setUser(user);
       })
       .catch((err) => {
