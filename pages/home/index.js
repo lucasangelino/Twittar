@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 
-import styles from "./styles.module.css";
 import AppLayout from "../../components/applayout";
-import Avatar from "../../components/avatar/";
+import Twity from "../../components/twity";
 
 export default function HomePage() {
   const [twities, setTwities] = useState([]);
@@ -17,18 +16,61 @@ export default function HomePage() {
   return (
     <>
       <AppLayout>
-        <section className={styles.section}>
-          <header className={styles.header}>
-            <h2 className={styles.h2}>Inicio</h2>
+        <section>
+          <header>
+            <h2>Inicio</h2>
           </header>
-          {twities.map((twity) => (
-            <article key={twity.id}>
-              <Avatar src={twity.avatar} height={21} alt={twity.username} />
-            </article>
-          ))}
-          <nav className={styles.nav}>Nav bar</nav>
+          <div>
+            {twities.map(({ id, avatar, username, message }) => (
+              <Twity
+                key={id}
+                avatar={avatar}
+                username={username}
+                message={message}
+              />
+            ))}
+          </div>
+          <nav>Nav bar</nav>
         </section>
       </AppLayout>
+
+      <style jsx>
+        {`
+          header {
+            display: flex;
+            top: 0;
+            position: sticky;
+            height: 49px;
+            width: 100%;
+            align-items: center;
+            border-bottom: 1px solid #e5e5e5;
+            background: white;
+          }
+
+          nav {
+            display: flex;
+            bottom: 0;
+            position: sticky;
+            height: 49px;
+            width: 100%;
+            background-color: white;
+            border-top: 1px solid gray;
+          }
+
+          h2 {
+            font-size: 21px;
+            font-weight: 700;
+          }
+
+          section {
+            display: block;
+            position: relative;
+            height: 100%;
+            overflow-y: scroll;
+            margin-bottom: 2px;
+          }
+        `}
+      </style>
     </>
   );
 }
