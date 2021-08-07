@@ -10,7 +10,8 @@ const data = {
     },
     {
       id: 1,
-      avatar: "https://randomuser.me/api/portraits/med/men/2.jpg",
+      avatar:
+        "http://pm1.narvii.com/6726/b18d390ce2ddf3a897c311921926715d7245f4d5v2_00.jpg",
       username: "Luke Skywalker",
       message:
         "El otro dia le pedi a Obi Wan que me prestara la nave para salir un rato. Me dijo que no. Tuve que ir caminando a la joda",
@@ -52,7 +53,8 @@ const data = {
     },
     {
       id: 7,
-      avatar: "https://randomuser.me/api/portraits/med/men/2.jpg",
+      avatar:
+        "http://pm1.narvii.com/6726/b18d390ce2ddf3a897c311921926715d7245f4d5v2_00.jpg",
       username: "Anakin Skywalker",
       message:
         "La carrera de pilotos comienza la semana que viene, los que se quieran inscribir, escribirme por privado",
