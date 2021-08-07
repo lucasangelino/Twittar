@@ -5,7 +5,6 @@ import { colors } from "../styles/theme";
 import AppLayout from "../components/applayout";
 import Button from "../components/button";
 import GitHub from "../components/Icons/GitHub";
-import Avatar from "../components/Avatar";
 
 // Login
 import { loginWithGitHub, onAuthStateChanged } from "../firebase/client";
