@@ -54,7 +54,7 @@ export default function HomePage() {
             height: 49px;
             width: 100%;
             background-color: white;
-            border-top: 1px solid gray;
+            border-top: 1px solid #e5e5e5;
           }
 
           h2 {
@@ -68,6 +68,13 @@ export default function HomePage() {
             height: 100%;
             overflow-y: scroll;
             margin-bottom: 2px;
+          }
+          section::-webkit-scrollbar {
+            display: none;
+          }
+          section {
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
           }
         `}
       </style>

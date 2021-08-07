@@ -20,6 +20,9 @@ export default function Twity({ avatar, username, message }) {
           padding: 10px 15px;
           border-bottom: 1px solid ${colors.terciary};
         }
+        article:last-child {
+          border-bottom: none;
+        }
         div {
           display: flex;
           padding: 10px 15px;
