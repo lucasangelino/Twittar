@@ -32,15 +32,35 @@ export default css`
     background: #fff;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
-    height: 100%;
+    height: 90%;
     width: 100%;
     padding: 10px;
+  }
+  section {
+    height: 50px;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    padding: 10px;
+    margin-left: 50px;
+    margin-bottom: 50px;
+    border-radius: 5px;
+    background-color: orange;
   }
 
   @media (min-width: ${breakpoints.mobile}) {
     main {
       width: ${breakpoints.mobile};
       height: 90vh;
+    }
+    @media (max-width: 1230px) {
+      section {
+        display: none;
+      }
     }
   }
 `;

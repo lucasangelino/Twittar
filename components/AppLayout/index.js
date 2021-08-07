@@ -6,6 +6,9 @@ export default function AppLayout({ children }) {
       <div>
         <main>{children}</main>
       </div>
+      <section>
+        <p>This app is Mobile-Only</p>
+      </section>
 
       <style jsx>{styles}</style>
       <style jsx global>
