@@ -24,13 +24,9 @@ export default function Home() {
   }, [user]);
 
   const handleLoginWithGitHub = () => {
-    loginWithGitHub()
-      .then((user) => {
-        setUser(user);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    loginWithGitHub().catch((err) => {
+      console.log(err);
+    });
   };
 
   return (
