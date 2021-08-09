@@ -14,6 +14,8 @@ const firebaseConfig = {
 // Singleton
 !firebase.apps.length && firebase.initializeApp(firebaseConfig);
 
+const db = firebase.firestore();
+
 const mapUserFromFirebaseAuthToUser = (user) => {
   const { photoURL, email, displayName, uid } = user;
   return {
@@ -36,4 +38,14 @@ export const loginWithGitHub = () => {
   return firebase.auth().signInWithPopup(gitHubProvider);
 };
 
-export const addDevit = ({ avatar, content, useId, username }) => {};
+export const addTwity = ({ avatar, content, userId, username }) => {
+  return db.collection("twities").add({
+    avatar,
+    content,
+    userId,
+    username,
+    createdAt: firebase.firestore.Timestamp.fromDate(new Date()),
+    linksCount: 0,
+    sharedCount: 0,
+  });
+};
