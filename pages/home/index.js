@@ -2,16 +2,18 @@ import { useState, useEffect } from "react";
 
 import AppLayout from "../../components/applayout";
 import Twity from "../../components/twity";
+import useUser from "../../hooks/useUser";
 
 export default function HomePage() {
   const [twities, setTwities] = useState([]);
+  const user = useUser();
 
   useEffect(() => {
     fetch("/api/statuses/home_timeline")
       .then((res) => res.json())
       .then((data) => setTwities(data.timeline));
     return () => {};
-  }, []);
+  }, [user]);
 
   return (
     <>
