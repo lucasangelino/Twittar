@@ -43,8 +43,9 @@ export default function HomePage() {
             height: 49px;
             width: 100%;
             align-items: center;
-            border-bottom: 1px solid #e5e5e5;
-            background: white;
+            border-bottom: 1px solid #eee;
+            background: #ffffffaa;
+            backdrop-filter: blur(5px);
           }
 
           nav {
@@ -53,13 +54,14 @@ export default function HomePage() {
             position: sticky;
             height: 49px;
             width: 100%;
-            background-color: white;
+            background-color: #fff;
             border-top: 1px solid #e5e5e5;
           }
 
           h2 {
             font-size: 21px;
             font-weight: 700;
+            padding-left: 15px;
           }
 
           section {

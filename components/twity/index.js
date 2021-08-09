@@ -1,5 +1,4 @@
 import Avatar from "../../components/avatar/";
-import { colors } from "../../styles/theme";
 
 export default function Twity({ avatar, username, message }) {
   return (
@@ -18,7 +17,7 @@ export default function Twity({ avatar, username, message }) {
         article {
           display: flex;
           padding: 10px 15px;
-          border-bottom: 1px solid ${colors.terciary};
+          border-bottom: 1px solid #eeeeee;
         }
         article:last-child {
           border-bottom: none;

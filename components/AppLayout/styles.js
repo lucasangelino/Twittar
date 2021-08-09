@@ -19,6 +19,10 @@ export const globalStyles = css.global`
   * {
     box-sizing: border-box;
   }
+  textarea,
+  input {
+    font-family: ${fonts.base};
+  }
 `;
 
 export default css`
@@ -34,7 +38,7 @@ export default css`
     border-radius: 10px;
     height: 90%;
     width: 100%;
-    padding: 10px;
+    padding: 0 10px;
   }
   section {
     height: 50px;
