@@ -49,3 +49,20 @@ export const addTwity = ({ avatar, content, userId, username }) => {
     sharedCount: 0,
   });
 };
+
+export const getLatestTwities = () => {
+  return db
+    .collection("twities")
+    .limit(10)
+    .get()
+    .then((snapshot) =>
+      snapshot.docs.map((doc) => {
+        const data = doc.data();
+        const id = doc.id;
+        return {
+          id,
+          ...data,
+        };
+      })
+    );
+};

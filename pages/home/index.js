@@ -3,15 +3,14 @@ import { useState, useEffect } from "react";
 import AppLayout from "../../components/applayout";
 import Twity from "../../components/twity";
 import useUser from "../../hooks/useUser";
+import { getLatestTwities } from "../../firebase/client";
 
 export default function HomePage() {
   const [twities, setTwities] = useState([]);
   const user = useUser();
 
   useEffect(() => {
-    fetch("/api/statuses/home_timeline")
-      .then((res) => res.json())
-      .then((data) => setTwities(data.timeline));
+    getLatestTwities().then(setTwities);
     return () => {};
   }, [user]);
 
@@ -23,14 +22,18 @@ export default function HomePage() {
             <h2>Inicio</h2>
           </header>
           <div>
-            {twities.map(({ id, avatar, username, message }) => (
-              <Twity
-                key={id}
-                avatar={avatar}
-                username={username}
-                message={message}
-              />
-            ))}
+            {twities.map(
+              ({ id, avatar, username, content, userId, createdAt }) => (
+                <Twity
+                  key={id}
+                  avatar={avatar}
+                  username={username}
+                  content={content}
+                  userId={userId}
+                  createdAt={createdAt}
+                />
+              )
+            )}
           </div>
           <nav>Nav bar</nav>
         </section>

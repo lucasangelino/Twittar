@@ -1,6 +1,6 @@
 import Avatar from "../../components/avatar/";
 
-export default function Twity({ avatar, username, message }) {
+export default function Twity({ avatar, username, content }) {
   return (
     <>
       <article>
@@ -9,7 +9,7 @@ export default function Twity({ avatar, username, message }) {
         </div>
         <section>
           <strong>{username}</strong>
-          <p>{message}</p>
+          <p>{content}</p>
         </section>
       </article>
 

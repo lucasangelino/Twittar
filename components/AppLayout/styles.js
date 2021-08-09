@@ -37,7 +37,7 @@ export default css`
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     height: 90%;
-    width: 100%;
+    width: 480px;
     padding: 0 10px;
   }
   section {
@@ -56,15 +56,15 @@ export default css`
     background-color: orange;
   }
 
-  @media (min-width: ${breakpoints.mobile}) {
+  @media (max-width: ${breakpoints.mobile}) {
     main {
       width: ${breakpoints.mobile};
-      height: 90vh;
+      height: 100vh;
     }
-    @media (max-width: 1230px) {
-      section {
-        display: none;
-      }
+  }
+  @media (max-width: 1230px) {
+    section {
+      display: none;
     }
   }
 `;
