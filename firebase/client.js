@@ -59,9 +59,14 @@ export const getLatestTwities = () => {
       snapshot.docs.map((doc) => {
         const data = doc.data();
         const id = doc.id;
+        const { createdAt } = data;
+        const date = new Date(createdAt.seconds * 1000);
+        const intl = Intl.DateTimeFormat("es-ES");
+        const normalizedCreatedAt = intl.format(date);
         return {
-          id,
           ...data,
+          id,
+          createdAt: normalizedCreatedAt,
         };
       })
     );

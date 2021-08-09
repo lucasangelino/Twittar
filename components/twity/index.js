@@ -1,6 +1,12 @@
 import Avatar from "../../components/avatar/";
 
-export default function Twity({ avatar, username, content }) {
+export default function Twity({
+  avatar,
+  username,
+  content,
+  createdAt,
+  userId,
+}) {
   return (
     <>
       <article>
@@ -8,7 +14,11 @@ export default function Twity({ avatar, username, content }) {
           <Avatar src={avatar} height={21} alt={username} />
         </div>
         <section>
-          <strong>{username}</strong>
+          <header>
+            <strong>{username}</strong>
+            <span> - </span>
+            <date>{createdAt}</date>
+          </header>
           <p>{content}</p>
         </section>
       </article>
@@ -29,6 +39,10 @@ export default function Twity({ avatar, username, content }) {
         p {
           lineheight: 1.3125;
           margin: 0;
+        }
+        date {
+          font-size: 12px;
+          color: #999;
         }
       `}</style>
     </>
