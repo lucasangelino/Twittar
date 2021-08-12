@@ -56,7 +56,7 @@ export default function HomePage() {
           nav {
             display: flex;
             bottom: 0;
-            position: sticky;
+            position: absolute;
             height: 49px;
             width: 100%;
             background-color: #fff;
