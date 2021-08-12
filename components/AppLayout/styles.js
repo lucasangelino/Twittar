@@ -29,7 +29,7 @@ export default css`
   div {
     display: grid;
     place-items: center;
-    height: 100vh;
+    height: 80vh;
   }
   main {
     position: relative;

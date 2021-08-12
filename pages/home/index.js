@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-
+import Link from "next/link";
 import AppLayout from "../../components/applayout";
 import Twity from "../../components/twity";
 import useUser from "../../hooks/useUser";
+import Create from "../../components/Icons/Create";
 import { getLatestTwities } from "../../firebase/client";
 
 export default function HomePage() {
@@ -35,7 +36,13 @@ export default function HomePage() {
               )
             )}
           </div>
-          <nav>Nav bar</nav>
+          <nav>
+            <Link href="/compose/twity">
+              <a>
+                <Create stroke="#09f" width={32} height={32} />
+              </a>
+            </Link>
+          </nav>
         </section>
       </AppLayout>
 
@@ -56,7 +63,7 @@ export default function HomePage() {
           nav {
             display: flex;
             bottom: 0;
-            position: absolute;
+            position: sticky;
             height: 49px;
             width: 100%;
             background-color: #fff;

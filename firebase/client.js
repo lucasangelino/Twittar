@@ -53,7 +53,7 @@ export const addTwity = ({ avatar, content, userId, username }) => {
 export const getLatestTwities = () => {
   return db
     .collection("twities")
-    .limit(10)
+    .orderBy("createdAt", "desc")
     .get()
     .then((snapshot) =>
       snapshot.docs.map((doc) => {
