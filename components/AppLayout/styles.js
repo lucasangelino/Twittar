@@ -29,14 +29,15 @@ export default css`
   div {
     display: grid;
     place-items: center;
-    height: 80vh;
   }
   main {
+    display: flex;
+    flex-direction: column;
     position: relative;
     background: #fff;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
-    height: 90%;
+    min-height: 98%;
     width: 480px;
     padding: 0 10px;
   }
@@ -56,7 +57,7 @@ export default css`
     background-color: orange;
   }
 
-  @media (max-width: ${breakpoints.mobile}) {
+  @media (min-width: ${breakpoints.mobile}) {
     main {
       width: ${breakpoints.mobile};
       height: 100vh;

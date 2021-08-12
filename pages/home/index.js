@@ -3,8 +3,10 @@ import Link from "next/link";
 import AppLayout from "../../components/applayout";
 import Twity from "../../components/twity";
 import useUser from "../../hooks/useUser";
-import Create from "../../components/Icons/Create";
 import { getLatestTwities } from "../../firebase/client";
+
+import Create from "../../components/Icons/Create";
+import Home from "../../components/Icons/Home";
 
 export default function HomePage() {
   const [twities, setTwities] = useState([]);
@@ -37,6 +39,16 @@ export default function HomePage() {
             )}
           </div>
           <nav>
+            <Link href="/home">
+              <a>
+                <Home stroke="#09f" width={32} height={32} />
+              </a>
+            </Link>
+            <Link href="/compose/twity">
+              <a>
+                <Create stroke="#09f" width={32} height={32} />
+              </a>
+            </Link>
             <Link href="/compose/twity">
               <a>
                 <Create stroke="#09f" width={32} height={32} />
@@ -70,6 +82,14 @@ export default function HomePage() {
             border-top: 1px solid #e5e5e5;
           }
 
+          nav a {
+            display: flex;
+            flex: 1 1 auto;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+          }
+
           h2 {
             font-size: 21px;
             font-weight: 700;
@@ -77,6 +97,7 @@ export default function HomePage() {
           }
 
           section {
+            flex: 1;
             display: block;
             position: relative;
             height: 100%;
