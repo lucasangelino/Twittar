@@ -1,5 +1,5 @@
 import Avatar from "../../components/avatar/";
-
+import useTimeAgo from "../../hooks/useTimeAgo";
 export default function Twity({
   avatar,
   username,
@@ -7,6 +7,7 @@ export default function Twity({
   createdAt,
   userId,
 }) {
+  const timeago = useTimeAgo(createdAt);
   return (
     <>
       <article>
@@ -17,7 +18,7 @@ export default function Twity({
           <header>
             <strong>{username}</strong>
             <span> - </span>
-            <date>{createdAt}</date>
+            <date>{timeago}</date>
           </header>
           <p>{content}</p>
         </section>

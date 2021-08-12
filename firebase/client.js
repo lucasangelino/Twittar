@@ -60,13 +60,11 @@ export const getLatestTwities = () => {
         const data = doc.data();
         const id = doc.id;
         const { createdAt } = data;
-        const date = new Date(createdAt.seconds * 1000);
-        const intl = Intl.DateTimeFormat("es-ES");
-        const normalizedCreatedAt = intl.format(date);
+
         return {
           ...data,
           id,
-          createdAt: normalizedCreatedAt,
+          createdAt: +createdAt.toDate(),
         };
       })
     );
