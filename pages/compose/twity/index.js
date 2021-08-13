@@ -25,6 +25,8 @@ export default function ComposeTwity() {
   const user = useUser();
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState(COMPOSE_STATES.USER_NOT_KNOW);
+
+  // Handle drag and drop image
   const [drag, setDrag] = useState(DRAG_IMAGE_STATES.NONE);
   const [task, setTask] = useState(null);
   const [imgURL, setImgURL] = useState(null);
