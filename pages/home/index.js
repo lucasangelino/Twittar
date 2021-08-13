@@ -7,6 +7,7 @@ import { getLatestTwities } from "../../firebase/client";
 
 import Create from "../../components/Icons/Create";
 import Home from "../../components/Icons/Home";
+import Search from "../../components/Icons/Search";
 
 export default function HomePage() {
   const [twities, setTwities] = useState([]);
@@ -44,9 +45,9 @@ export default function HomePage() {
                 <Home stroke="#09f" width={32} height={32} />
               </a>
             </Link>
-            <Link href="/compose/twity">
+            <Link href="/search">
               <a>
-                <Create stroke="#09f" width={32} height={32} />
+                <Search stroke="#09f" width={32} height={32} />
               </a>
             </Link>
             <Link href="/compose/twity">
@@ -88,6 +89,12 @@ export default function HomePage() {
             justify-content: center;
             align-items: center;
             height: 100%;
+          }
+
+          nav a:hover {
+            background: radial-gradient(#0099ff11 15%, transparent 16%);
+            background-size: 180px 180px;
+            background-position: center center;
           }
 
           h2 {
