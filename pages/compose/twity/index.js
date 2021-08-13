@@ -78,7 +78,7 @@ export default function ComposeTwity() {
         </Head>
         <form onSubmit={handleSubmit}>
           <textarea
-            placeholder="¿Que esta pasando?"
+            placeholder="¿Qué está pasando?"
             onChange={handleChange}
             value={message}
             onDragEnter={handleDragEnter}
