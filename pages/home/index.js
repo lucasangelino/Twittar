@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Head from "next/head";
 import AppLayout from "../../components/applayout";
 import Twity from "../../components/twity";
 import useUser from "../../hooks/useUser";
@@ -8,6 +9,8 @@ import { getLatestTwities } from "../../firebase/client";
 import Create from "../../components/Icons/Create";
 import Home from "../../components/Icons/Home";
 import Search from "../../components/Icons/Search";
+
+import { colors } from "../../styles/theme";
 
 export default function HomePage() {
   const [twities, setTwities] = useState([]);
@@ -21,6 +24,13 @@ export default function HomePage() {
   return (
     <>
       <AppLayout>
+        <Head>
+          <title>Twity / Home</title>
+          <meta
+            name="description"
+            content="Twity is a simple, fast and free site to share MEMEs"
+          />
+        </Head>
         <section>
           <header>
             <h2>Inicio</h2>
@@ -95,6 +105,10 @@ export default function HomePage() {
             background: radial-gradient(#0099ff11 15%, transparent 16%);
             background-size: 180px 180px;
             background-position: center center;
+          }
+
+          nav a:hover > :global(svg) {
+            stoke: ${colors.primary};
           }
 
           h2 {

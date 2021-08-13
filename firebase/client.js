@@ -69,3 +69,9 @@ export const getLatestTwities = () => {
       })
     );
 };
+
+export const uploadImage = (image) => {
+  const ref = firebase.storage().ref(`images/${image.name}`);
+  const task = ref.put(image);
+  return task;
+};
