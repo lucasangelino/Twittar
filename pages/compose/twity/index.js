@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import AppLayout from "../../../components/applayout";
 import Button from "../../../components/button/";
 import useUser from "../../../hooks/useUser";
-import { addTwity } from "../../../firebase/client";
+import { addTwity, uploadImage } from "../../../firebase/client";
 import router from "next/router";
 import Head from "next/head";
 
@@ -33,6 +33,19 @@ export default function ComposeTwity() {
 
   const isButtonDisabled = status === COMPOSE_STATES.LOADING || !message.length;
 
+  useEffect(() => {
+    if (task) {
+      const onProgress = () => {};
+      const onError = () => {};
+      const onComplete = () => {
+        task.snapshot.ref.getDownloadURL().then((url) => {
+          setImgURL(url);
+        });
+      };
+      task.on("state_change", onProgress, onError, onComplete);
+    }
+  }, [task]);
+
   const handleChange = (e) => {
     setMessage(e.target.value);
   };
@@ -45,6 +58,7 @@ export default function ComposeTwity() {
       content: message,
       userId: user.uid,
       username: user.username,
+      img: imgURL,
     })
       .then(() => router.push(`/home`))
       .catch((err) => {
@@ -66,6 +80,9 @@ export default function ComposeTwity() {
   const handleDrop = (e) => {
     e.preventDefault();
     setDrag(DRAG_IMAGE_STATES.NONE);
+    const file = e.dataTransfer.files[0];
+    const task = uploadImage(file);
+    setTask(task);
   };
 
   return (
@@ -86,20 +103,49 @@ export default function ComposeTwity() {
             onDragEnter={handleDragEnter}
             onDragLeave={handleDragLeave}
             onDrop={handleDrop}
-          >
-            {user}
-          </textarea>
-
-          <Button disabled={isButtonDisabled}>Twit</Button>
+          ></textarea>
+          {imgURL && (
+            <section>
+              <button onClick={() => setImgURL(null)}>X</button>
+              <img src={imgURL} alt="image" draggable="false" />
+            </section>
+          )}
+          <div>
+            <Button disabled={isButtonDisabled}>Twit</Button>
+          </div>
         </form>
+
         <style jsx>
           {`
             div {
               padding: 15px;
             }
 
+            section {
+              position: relative;
+            }
+
+            button {
+              background: rgba(0, 0, 0, 0.3);
+              cursor: pointer;
+              color: #fff;
+              position: absolute;
+              right: 15px;
+              top: 15px;
+              border: 0;
+              height: 30px;
+              width: 30px;
+              border-radius: 100%;
+              padding: 10px;
+            }
+
             form {
               margin: 10px;
+            }
+            img {
+              border-radius: 10px;
+              height: auto;
+              width: 100%;
             }
             textarea {
               border: ${drag === DRAG_IMAGE_STATES.DRAG_OVER
