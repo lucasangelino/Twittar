@@ -5,6 +5,7 @@ import useUser from "../../../hooks/useUser";
 import { addTwity, uploadImage } from "../../../firebase/client";
 import router from "next/router";
 import Head from "next/head";
+import Avatar from "../../../components/avatar";
 
 const COMPOSE_STATES = {
   USER_NOT_KNOW: 0,
@@ -79,6 +80,7 @@ export default function ComposeTwity() {
 
   const handleDrop = (e) => {
     e.preventDefault();
+    console.log(user);
     setDrag(DRAG_IMAGE_STATES.NONE);
     const file = e.dataTransfer.files[0];
     const task = uploadImage(file);
@@ -95,34 +97,49 @@ export default function ComposeTwity() {
             content="Twity is a simple, fast and free site to share MEMEs"
           />
         </Head>
-        <form onSubmit={handleSubmit}>
-          <textarea
-            placeholder="¿Qué está pasando?"
-            onChange={handleChange}
-            value={message}
-            onDragEnter={handleDragEnter}
-            onDragLeave={handleDragLeave}
-            onDrop={handleDrop}
-          ></textarea>
-          {imgURL && (
-            <section>
-              <button onClick={() => setImgURL(null)}>X</button>
-              <img src={imgURL} alt="image" draggable="false" />
+        <section className="form-container">
+          {user && (
+            <section className="avatar-continer">
+              <Avatar src={user.avatar} height={21} alt={user.username} />
             </section>
           )}
-          <div>
-            <Button disabled={isButtonDisabled}>Twit</Button>
-          </div>
-        </form>
+          <form onSubmit={handleSubmit}>
+            <textarea
+              placeholder="¿Qué está pasando?"
+              onChange={handleChange}
+              value={message}
+              onDragEnter={handleDragEnter}
+              onDragLeave={handleDragLeave}
+              onDrop={handleDrop}
+            ></textarea>
+            {imgURL && (
+              <section className="remove-img">
+                <button onClick={() => setImgURL(null)}>X</button>
+                <img src={imgURL} alt="image" draggable="false" />
+              </section>
+            )}
+            <div>
+              <Button disabled={isButtonDisabled}>Twit</Button>
+            </div>
+          </form>
+        </section>
 
         <style jsx>
           {`
-            div {
-              padding: 15px;
+            .remove-img {
+              position: relative;
             }
 
-            section {
-              position: relative;
+            .form-container {
+              display: flex;
+              align-items: flex-start;
+            }
+            .avatar-continer {
+              padding-top: 20px;
+              padding-left: 10px;
+            }
+            div {
+              padding: 15px;
             }
 
             button {

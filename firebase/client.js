@@ -38,13 +38,13 @@ export const loginWithGitHub = () => {
   return firebase.auth().signInWithPopup(gitHubProvider);
 };
 
-export const addTwity = ({ avatar, content, userId, username, image }) => {
+export const addTwity = ({ avatar, content, userId, username, img }) => {
   return db.collection("twities").add({
     avatar,
     content,
     userId,
     username,
-    image,
+    img,
     createdAt: firebase.firestore.Timestamp.fromDate(new Date()),
     linksCount: 0,
     sharedCount: 0,

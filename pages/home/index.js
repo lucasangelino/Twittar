@@ -37,12 +37,13 @@ export default function HomePage() {
           </header>
           <div>
             {twities.map(
-              ({ id, avatar, username, content, userId, createdAt }) => (
+              ({ id, avatar, username, content, userId, createdAt, img }) => (
                 <Twity
                   key={id}
                   avatar={avatar}
                   username={username}
                   content={content}
+                  img={img}
                   userId={userId}
                   createdAt={createdAt}
                 />

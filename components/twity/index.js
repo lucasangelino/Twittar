@@ -4,6 +4,7 @@ export default function Twity({
   avatar,
   username,
   content,
+  img,
   createdAt,
   userId,
 }) {
@@ -21,6 +22,7 @@ export default function Twity({
             <date>{timeago}</date>
           </header>
           <p>{content}</p>
+          {img && <img src={img} alt={username} />}
         </section>
       </article>
 
@@ -40,6 +42,12 @@ export default function Twity({
         p {
           lineheight: 1.3125;
           margin: 0;
+        }
+        img {
+          height: auto;
+          width: 100%;
+          border-radius: 10px;
+          margin-top: 10px;
         }
         date {
           font-size: 12px;
