@@ -1,6 +1,8 @@
 import Avatar from "../../components/avatar/";
 import useTimeAgo from "../../hooks/useTimeAgo";
 import Link from "next/link";
+import { useRouter } from "next/router";
+
 export default function Twity({
   avatar,
   username,
@@ -11,9 +13,17 @@ export default function Twity({
   id,
 }) {
   const timeago = useTimeAgo(createdAt);
+
+  const router = useRouter();
+
+  const handleArticleClick = (e) => {
+    e.preventDefault();
+    router.push(`/status/[id]`, `/status/${id}`);
+  };
+
   return (
     <>
-      <article>
+      <article onClick={handleArticleClick}>
         <div>
           <Avatar src={avatar} height={21} alt={username} />
         </div>
@@ -46,6 +56,10 @@ export default function Twity({
         }
         article:last-child {
           border-bottom: none;
+        }
+        article:hover {
+          background-color: #f8f8fa;
+          cursor: pointer;s
         }
         div {
           display: flex;
