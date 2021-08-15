@@ -22,7 +22,7 @@ export default function Twity({
             <strong>{username}</strong>
             <span> - </span>
             <Link href={`/status/[id]`} as={`/status/${id}`}>
-              <a>
+              <a className="time">
                 <time>{timeago}</time>
               </a>
             </Link>
@@ -33,6 +33,12 @@ export default function Twity({
       </article>
 
       <style jsx>{`
+        .time {
+          text-decoration: none;
+        }
+        .time:hover {
+          text-decoration: underline;
+        }
         article {
           display: flex;
           padding: 10px 15px;
