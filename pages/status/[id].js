@@ -1,8 +1,10 @@
+import Twity from "../../components/twity";
+
 export default function TwityPage(props) {
   console.log(props);
   return (
     <>
-      <div>ID</div>
+      <Twity {...props}></Twity>
       <style jsx>{``}</style>
     </>
   );

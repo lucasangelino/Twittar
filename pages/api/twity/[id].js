@@ -9,7 +9,14 @@ export default function (req, res) {
     .get()
     .then((doc) => {
       const data = doc.data();
-      res.json(data);
+      const id = doc.id;
+      const { createdAt } = data;
+
+      res.json({
+        ...data,
+        id,
+        createdAt: +createdAt.toDate(),
+      });
     })
     .catch(() => {
       res.status(404).send();
