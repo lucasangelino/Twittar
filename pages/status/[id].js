@@ -6,3 +6,11 @@ export default function TwityPage() {
     </>
   );
 }
+
+TwityPage.getInitialProps = (context) => {
+  // Render in server and in client
+  const { query } = context;
+  const { id } = query;
+
+  return {};
+};
