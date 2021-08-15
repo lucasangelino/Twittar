@@ -1,4 +1,3 @@
-import AppLayout from "../../components/applayout/index";
 export default function TwityPage() {
   return (
     <>

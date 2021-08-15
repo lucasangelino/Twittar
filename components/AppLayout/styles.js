@@ -60,7 +60,8 @@ export default css`
   @media (min-width: ${breakpoints.mobile}) {
     main {
       width: ${breakpoints.mobile};
-      height: 100vh;
+      height: 98vh;
+      margin-top: 0;
     }
   }
   @media (max-width: 1230px) {

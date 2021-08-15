@@ -42,6 +42,7 @@ export default function HomePage() {
                 username={username}
                 content={content}
                 img={img}
+                id={id}
                 userId={userId}
                 createdAt={createdAt}
               />

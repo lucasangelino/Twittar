@@ -1,5 +1,6 @@
 import Avatar from "../../components/avatar/";
 import useTimeAgo from "../../hooks/useTimeAgo";
+import Link from "next/link";
 export default function Twity({
   avatar,
   username,
@@ -7,6 +8,7 @@ export default function Twity({
   img,
   createdAt,
   userId,
+  id,
 }) {
   const timeago = useTimeAgo(createdAt);
   return (
@@ -19,7 +21,11 @@ export default function Twity({
           <header>
             <strong>{username}</strong>
             <span> - </span>
-            <time>{timeago}</time>
+            <Link href={`/status/[id]`} as={`/status/${id}`}>
+              <a>
+                <time>{timeago}</time>
+              </a>
+            </Link>
           </header>
           <p>{content}</p>
           {img && <img src={img} alt={username} />}
