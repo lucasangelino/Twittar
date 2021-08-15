@@ -19,7 +19,7 @@ export default function Twity({
           <header>
             <strong>{username}</strong>
             <span> - </span>
-            <date>{timeago}</date>
+            <time>{timeago}</time>
           </header>
           <p>{content}</p>
           {img && <img src={img} alt={username} />}
@@ -49,7 +49,7 @@ export default function Twity({
           border-radius: 10px;
           margin-top: 10px;
         }
-        date {
+        time {
           font-size: 12px;
           color: #999;
         }
