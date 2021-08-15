@@ -37,7 +37,7 @@ export default css`
     background: #fff;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
-    min-height: 98%;
+    height: 100%;
     width: 480px;
     padding: 0 10px;
   }
@@ -60,13 +60,7 @@ export default css`
   @media (min-width: ${breakpoints.mobile}) {
     main {
       width: ${breakpoints.mobile};
-      height: 98vh;
-      margin-top: 0;
-    }
-  }
-  @media (max-width: 1230px) {
-    section {
-      display: none;
+      height: 100vh;
     }
   }
 `;
