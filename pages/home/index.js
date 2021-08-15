@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Head from "next/head";
-import AppLayout from "../../components/applayout";
 import Twity from "../../components/twity";
 import useUser from "../../hooks/useUser";
 import { getLatestTwities } from "../../firebase/client";
@@ -23,52 +22,50 @@ export default function HomePage() {
 
   return (
     <>
-      <AppLayout>
-        <Head>
-          <title>Twity / Home</title>
-          <meta
-            name="description"
-            content="Twity is a simple, fast and free site to share MEMEs"
-          />
-        </Head>
-        <section>
-          <header>
-            <h2>Inicio</h2>
-          </header>
-          <div>
-            {twities.map(
-              ({ id, avatar, username, content, userId, createdAt, img }) => (
-                <Twity
-                  key={id}
-                  avatar={avatar}
-                  username={username}
-                  content={content}
-                  img={img}
-                  userId={userId}
-                  createdAt={createdAt}
-                />
-              )
-            )}
-          </div>
-          <nav>
-            <Link href="/home">
-              <a>
-                <Home stroke="#09f" width={32} height={32} />
-              </a>
-            </Link>
-            <Link href="/search">
-              <a>
-                <Search stroke="#09f" width={32} height={32} />
-              </a>
-            </Link>
-            <Link href="/compose/twity">
-              <a>
-                <Create stroke="#09f" width={32} height={32} />
-              </a>
-            </Link>
-          </nav>
-        </section>
-      </AppLayout>
+      <Head>
+        <title>Twity / Home</title>
+        <meta
+          name="description"
+          content="Twity is a simple, fast and free site to share MEMEs"
+        />
+      </Head>
+      <section>
+        <header>
+          <h2>Inicio</h2>
+        </header>
+        <div>
+          {twities.map(
+            ({ id, avatar, username, content, userId, createdAt, img }) => (
+              <Twity
+                key={id}
+                avatar={avatar}
+                username={username}
+                content={content}
+                img={img}
+                userId={userId}
+                createdAt={createdAt}
+              />
+            )
+          )}
+        </div>
+        <nav>
+          <Link href="/home">
+            <a>
+              <Home stroke="#09f" width={32} height={32} />
+            </a>
+          </Link>
+          <Link href="/search">
+            <a>
+              <Search stroke="#09f" width={32} height={32} />
+            </a>
+          </Link>
+          <Link href="/compose/twity">
+            <a>
+              <Create stroke="#09f" width={32} height={32} />
+            </a>
+          </Link>
+        </nav>
+      </section>
 
       <style jsx>
         {`

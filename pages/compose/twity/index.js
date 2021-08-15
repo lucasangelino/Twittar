@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import AppLayout from "../../../components/applayout";
 import Button from "../../../components/button/";
 import useUser from "../../../hooks/useUser";
 import { addTwity, uploadImage } from "../../../firebase/client";
@@ -89,97 +88,95 @@ export default function ComposeTwity() {
 
   return (
     <>
-      <AppLayout>
-        <Head>
-          <title>Twity / Create Twity</title>
-          <meta
-            name="description"
-            content="Twity is a simple, fast and free site to share MEMEs"
-          />
-        </Head>
-        <section className="form-container">
-          {user && (
-            <section className="avatar-continer">
-              <Avatar src={user.avatar} height={21} alt={user.username} />
+      <Head>
+        <title>Twity / Create Twity</title>
+        <meta
+          name="description"
+          content="Twity is a simple, fast and free site to share MEMEs"
+        />
+      </Head>
+      <section className="form-container">
+        {user && (
+          <section className="avatar-continer">
+            <Avatar src={user.avatar} height={21} alt={user.username} />
+          </section>
+        )}
+        <form onSubmit={handleSubmit}>
+          <textarea
+            placeholder="¿Qué está pasando?"
+            onChange={handleChange}
+            value={message}
+            onDragEnter={handleDragEnter}
+            onDragLeave={handleDragLeave}
+            onDrop={handleDrop}
+          ></textarea>
+          {imgURL && (
+            <section className="remove-img">
+              <button onClick={() => setImgURL(null)}>X</button>
+              <img src={imgURL} alt="image" draggable="false" />
             </section>
           )}
-          <form onSubmit={handleSubmit}>
-            <textarea
-              placeholder="¿Qué está pasando?"
-              onChange={handleChange}
-              value={message}
-              onDragEnter={handleDragEnter}
-              onDragLeave={handleDragLeave}
-              onDrop={handleDrop}
-            ></textarea>
-            {imgURL && (
-              <section className="remove-img">
-                <button onClick={() => setImgURL(null)}>X</button>
-                <img src={imgURL} alt="image" draggable="false" />
-              </section>
-            )}
-            <div>
-              <Button disabled={isButtonDisabled}>Twit</Button>
-            </div>
-          </form>
-        </section>
+          <div>
+            <Button disabled={isButtonDisabled}>Twit</Button>
+          </div>
+        </form>
+      </section>
 
-        <style jsx>
-          {`
-            .remove-img {
-              position: relative;
-            }
+      <style jsx>
+        {`
+          .remove-img {
+            position: relative;
+          }
 
-            .form-container {
-              display: flex;
-              align-items: flex-start;
-            }
-            .avatar-continer {
-              padding-top: 20px;
-              padding-left: 10px;
-            }
-            div {
-              padding: 15px;
-            }
+          .form-container {
+            display: flex;
+            align-items: flex-start;
+          }
+          .avatar-continer {
+            padding-top: 20px;
+            padding-left: 10px;
+          }
+          div {
+            padding: 15px;
+          }
 
-            button {
-              background: rgba(0, 0, 0, 0.3);
-              cursor: pointer;
-              color: #fff;
-              position: absolute;
-              right: 15px;
-              top: 15px;
-              border: 0;
-              height: 30px;
-              width: 30px;
-              border-radius: 100%;
-              padding: 10px;
-            }
+          button {
+            background: rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            color: #fff;
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            border: 0;
+            height: 30px;
+            width: 30px;
+            border-radius: 100%;
+            padding: 10px;
+          }
 
-            form {
-              margin: 10px;
-            }
-            img {
-              border-radius: 10px;
-              height: auto;
-              width: 100%;
-            }
-            textarea {
-              border: ${drag === DRAG_IMAGE_STATES.DRAG_OVER
-                ? "2px dashed #09f"
-                : "2px solid transparent"};
-              border-radius: 8px;
-              font-size: 1.2rem;
-              width: 100%;
-              resize: none;
-              padding: 15px;
-              outline: none;
-              min-height: 200px;
-              margin-bottom: 10px;
-            }
-          `}
-        </style>
-      </AppLayout>
+          form {
+            margin: 10px;
+          }
+          img {
+            border-radius: 10px;
+            height: auto;
+            width: 100%;
+          }
+          textarea {
+            border: ${drag === DRAG_IMAGE_STATES.DRAG_OVER
+              ? "2px dashed #09f"
+              : "2px solid transparent"};
+            border-radius: 8px;
+            font-size: 1.2rem;
+            width: 100%;
+            resize: none;
+            padding: 15px;
+            outline: none;
+            min-height: 200px;
+            margin-bottom: 10px;
+          }
+        `}
+      </style>
     </>
   );
 }

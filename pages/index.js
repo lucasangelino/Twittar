@@ -3,7 +3,6 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import useUser, { USER_STATES } from "../hooks/useUser";
 import { colors } from "../styles/theme";
-import AppLayout from "../components/applayout";
 import Button from "../components/button";
 import GitHub from "../components/Icons/GitHub";
 
@@ -31,24 +30,22 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <AppLayout>
-        <section>
-          <img src="/logo.svg" alt="Logo"></img>
-          <h1>Twity</h1>
-          <h4>The original App</h4>
-          <div>
-            {user === USER_STATES.NOT_LOGGED && (
-              <Button onClick={handleLoginWithGitHub}>
-                <GitHub height={24} width={24} color={"#fff"} />
-                Login with GitHub
-              </Button>
-            )}
-            {user === USER_STATES.NOT_KNOWN && (
-              <img className="spinner" src="/loading.gif" />
-            )}
-          </div>
-        </section>
-      </AppLayout>
+      <section>
+        <img src="/logo.svg" alt="Logo"></img>
+        <h1>Twity</h1>
+        <h4>The original App</h4>
+        <div>
+          {user === USER_STATES.NOT_LOGGED && (
+            <Button onClick={handleLoginWithGitHub}>
+              <GitHub height={24} width={24} color={"#fff"} />
+              Login with GitHub
+            </Button>
+          )}
+          {user === USER_STATES.NOT_KNOWN && (
+            <img className="spinner" src="/loading.gif" />
+          )}
+        </div>
+      </section>
 
       <style jsx>
         {`
