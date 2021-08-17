@@ -61,7 +61,6 @@ export const getLatestTwities = () => {
         const data = doc.data();
         const id = doc.id;
         const { createdAt } = data;
-
         return {
           ...data,
           id,

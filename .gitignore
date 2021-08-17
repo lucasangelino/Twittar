@@ -30,10 +30,4 @@ yarn-error.log*
 .env.production.local
 
 #firebase
-/firebase
-.firebaserc
-.firebaserc.json
-.firebaserc.js
-.firebaserc.yml
-.firebaserc.yaml
-.firebase-keys.json
+.firebase
