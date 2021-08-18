@@ -21,7 +21,7 @@ TwityPage.getInitialProps = (context) => {
       return apiResponse.json();
     }
     if (res) {
-      res.writeHead(301, { Location: "/404" }).end();
+      res.writeHead(301, { Location: "/ContentNotFound" }).end();
     }
   });
 };
