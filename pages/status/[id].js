@@ -1,7 +1,12 @@
+import { useRouter } from "next/router";
 import Twity from "../../components/twity";
+import { firestore } from "../../firebase/admin";
 
 export default function TwityPage(props) {
-  console.log(props);
+  const router = useRouter();
+
+  if (router.isFallback) return "Loading...";
+
   return (
     <>
       <Twity {...props}></Twity>
@@ -10,18 +15,35 @@ export default function TwityPage(props) {
   );
 }
 
-TwityPage.getInitialProps = (context) => {
-  // Only work in page components
-  // Render in server and in client
-  const { query, res } = context;
-  const { id } = query;
+export async function getStaticPaths() {
+  return {
+    paths: [],
+    fallback: true,
+  };
+}
 
-  return fetch(`http://localhost:3000/api/twity/${id}`).then((apiResponse) => {
-    if (apiResponse.ok) {
-      return apiResponse.json();
-    }
-    if (res) {
-      res.writeHead(301, { Location: "/ContentNotFound" }).end();
-    }
-  });
-};
+export async function getStaticProps(context) {
+  // params, req, res, query
+  const { params } = context;
+  const { id } = params;
+
+  return firestore
+    .collection("twities")
+    .doc(id)
+    .get()
+    .then((doc) => {
+      const data = doc.data();
+      const id = doc.id;
+      const { createdAt } = data;
+
+      const props = {
+        ...data,
+        id,
+        createdAt: +createdAt.toDate(),
+      };
+      return { props };
+    })
+    .catch(() => {
+      return { props: {} };
+    });
+}

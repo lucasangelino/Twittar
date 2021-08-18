@@ -51,23 +51,33 @@ export const addTwity = ({ avatar, content, userId, username, img }) => {
   });
 };
 
+const mapTwityFromFirebaseToObject = (doc) => {
+  const data = doc.data();
+  const id = doc.id;
+  const { createdAt } = data;
+  return {
+    ...data,
+    id,
+    createdAt: +createdAt.toDate(),
+  };
+};
+
+export const listenLatestTwities = (onChange) => {
+  return db
+    .collection("twities")
+    .orderBy("createdAt", "desc")
+    .onSnapshot((snapshot) => {
+      const twities = snapshot.docs.map(mapTwityFromFirebaseToObject);
+      onChange(twities);
+    });
+};
+
 export const getLatestTwities = () => {
   return db
     .collection("twities")
     .orderBy("createdAt", "desc")
     .get()
-    .then((snapshot) =>
-      snapshot.docs.map((doc) => {
-        const data = doc.data();
-        const id = doc.id;
-        const { createdAt } = data;
-        return {
-          ...data,
-          id,
-          createdAt: +createdAt.toDate(),
-        };
-      })
-    );
+    .then((snapshot) => snapshot.docs.map(mapTwityFromFirebaseToObject));
 };
 
 export const uploadImage = (image) => {
