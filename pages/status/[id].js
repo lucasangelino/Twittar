@@ -15,14 +15,13 @@ TwityPage.getInitialProps = (context) => {
   // Render in server and in client
   const { query, res } = context;
   const { id } = query;
-  console.log("getInitialPropss", id);
 
   return fetch(`http://localhost:3000/api/twity/${id}`).then((apiResponse) => {
     if (apiResponse.ok) {
       return apiResponse.json();
     }
     if (res) {
-      res.writeHead(301, { Location: "/home" }).end();
+      res.writeHead(301, { Location: "/404" }).end();
     }
   });
 };
