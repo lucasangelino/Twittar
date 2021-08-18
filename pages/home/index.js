@@ -3,7 +3,7 @@ import Link from "next/link";
 import Head from "next/head";
 import Twity from "../../components/twity";
 import useUser from "../../hooks/useUser";
-import { getLatestTwities } from "../../firebase/client";
+import { listenLatestTwities } from "../../firebase/client";
 
 import Create from "../../components/Icons/Create";
 import Home from "../../components/Icons/Home";
@@ -16,7 +16,11 @@ export default function HomePage() {
   const user = useUser();
 
   useEffect(() => {
-    getLatestTwities().then(setTwities);
+    if (user) {
+      listenLatestTwities((twities) => {
+        setTwities(twities);
+      });
+    }
     return () => {};
   }, [user]);
 

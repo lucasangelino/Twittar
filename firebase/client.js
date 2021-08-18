@@ -66,8 +66,9 @@ export const listenLatestTwities = (onChange) => {
   return db
     .collection("twities")
     .orderBy("createdAt", "desc")
-    .onSnapshot((snapshot) => {
-      const twities = snapshot.docs.map(mapTwityFromFirebaseToObject);
+    .limit(20)
+    .onSnapshot(({ docs }) => {
+      const twities = docs.map(mapTwityFromFirebaseToObject);
       onChange(twities);
     });
 };
@@ -76,6 +77,7 @@ export const getLatestTwities = () => {
   return db
     .collection("twities")
     .orderBy("createdAt", "desc")
+    .limit(20)
     .get()
     .then((snapshot) => snapshot.docs.map(mapTwityFromFirebaseToObject));
 };
