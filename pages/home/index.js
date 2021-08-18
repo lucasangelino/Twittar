@@ -16,12 +16,11 @@ export default function HomePage() {
   const user = useUser();
 
   useEffect(() => {
+    let unsubscribe;
     if (user) {
-      listenLatestTwities((twities) => {
-        setTwities(twities);
-      });
+      unsubscribe = listenLatestTwities(setTwities);
     }
-    return () => {};
+    return () => unsubscribe && unsubscribe();
   }, [user]);
 
   return (
