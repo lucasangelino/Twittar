@@ -73,6 +73,9 @@ export default function HomePage() {
 
       <style jsx>
         {`
+          div {
+            height: 100%;
+          }
           header {
             display: flex;
             top: 0;
