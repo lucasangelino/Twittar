@@ -13,12 +13,17 @@ import { colors } from "../../styles/theme";
 
 export default function HomePage() {
   const [twities, setTwities] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
   const user = useUser();
 
   useEffect(() => {
     let unsubscribe;
     if (user) {
-      unsubscribe = listenLatestTwities(setTwities);
+      unsubscribe = listenLatestTwities((newTwities) => {
+        setTwities(newTwities);
+        console.log("new twiw");
+      });
     }
     return () => unsubscribe && unsubscribe();
   }, [user]);
