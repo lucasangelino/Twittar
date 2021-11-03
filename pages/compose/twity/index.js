@@ -79,7 +79,6 @@ export default function ComposeTwity() {
 
   const handleDrop = (e) => {
     e.preventDefault();
-    console.log(user);
     setDrag(DRAG_IMAGE_STATES.NONE);
     const file = e.dataTransfer.files[0];
     const task = uploadImage(file);

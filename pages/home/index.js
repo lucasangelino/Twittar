@@ -22,7 +22,6 @@ export default function HomePage() {
     if (user) {
       unsubscribe = listenLatestTwities((newTwities) => {
         setTwities(newTwities);
-        console.log("new twiw");
       });
     }
     return () => unsubscribe && unsubscribe();
