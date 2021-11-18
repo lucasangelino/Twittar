@@ -19,7 +19,7 @@ export default function Home() {
 
   const handleLoginWithGitHub = () => {
     loginWithGitHub().catch((err) => {
-      console.log(err);
+      console.error(err);
     });
   };
 
